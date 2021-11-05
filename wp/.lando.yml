@@ -16,6 +16,9 @@ tooling:
       - cd /app/docroot/web && ln -s /app/defaults/wordpress/env/wp-config.php wp-config.php
       - cd /app/docroot/web && ln -s /app/defaults/wordpress/env/wp-config.local.php wp-config.local.php
       - cd /app/docroot/web && wp db clean --yes && wp core install --title="Drupal Camp Costa Rica 2021 - Wordpress" --url=dccr2021wp.lndo.site --admin_user=admin --admin_password=123 --admin_email=me@alemadlei.tech
+      - cd /app/docroot/web/wp-content/plugins && ln -s /app/custom/plugins/dccr2021 dccr2021
+      - cd /app/docroot/web/wp-content/themes && ln -s /app/custom/themes/dccr2021_clean dccr2021_clean
+      - cd /app/docroot/web/wp-content/themes && ln -s /app/custom/themes/dccr2021_inherit dccr2021_inherit
   02-sitebuilding:
     service: appserver
     cmd:
