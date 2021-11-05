@@ -1,0 +1,23 @@
+name: dccr2021wp
+recipe: wordpress
+config:
+  php: '7.4'
+  webroot: docroot
+  config:
+    vhosts: ../shared_defaults/apache/vhost.conf
+tooling:
+  wp:
+    service: appserver
+    cmd: wp --path=/app/docroot/web
+  01-setup:
+    service: appserver
+    cmd:
+      - mkdir -p /app/docroot/web && cd /app/docroot/web && wp core download
+      - cd /app/docroot/web && ln -s /app/defaults/wordpress/env/wp-config.php wp-config.php
+      - cd /app/docroot/web && ln -s /app/defaults/wordpress/env/wp-config.local.php wp-config.local.php
+      - cd /app/docroot/web && wp db clean --yes && wp core install --title="Drupal Camp Costa Rica 2021 - Wordpress" --url=dccr2021wp.lndo.site --admin_user=admin --admin_password=123 --admin_email=me@alemadlei.tech
+  02-sitebuilding:
+    service: appserver
+    cmd:
+      - cd /app/docroot/web && wp plugin install advanced-custom-fields custom-post-type-ui timber-library wp-cfm
+      - cd /app/docroot/web && wp plugin activate advanced-custom-fields custom-post-type-ui timber-library wp-cfm

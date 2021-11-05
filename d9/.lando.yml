@@ -26,4 +26,8 @@ tooling:
       - cd /app/docroot/web/themes && ln -s /app/custom/themes custom
       - cd /app/docroot && ln -s /app/defaults/drupal/config config
       - /app/docroot/vendor/drush/drush/drush --root=/app/docroot/web si -y
-
+  02-sitebuilding:
+    service: appserver
+    cmd:
+      - cd /app/docroot && composer require drupal/paragraphs drupal/layout_paragraphs
+      - cd /app/docroot/web && /app/docroot/vendor/drush/drush/drush en -y paragraphs layout_paragraphs
