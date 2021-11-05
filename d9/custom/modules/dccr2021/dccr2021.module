@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function dccr2021_theme($existing, $type, $theme, $path) {
+  return [
+    'dccr2021_texto' => [
+      'variables' => [
+        'el_valor_textual' => NULL,
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,29 @@
+name: dccr2021d9
+recipe: drupal9
+config:
+  php: '7.4'
+  webroot: docroot
+  config:
+    vhosts: ../shared_defaults/apache/vhost.conf
+tooling:
+  drush:
+    service: appserver
+    cmd: /app/docroot/vendor/drush/drush/drush --root=/app/docroot/web
+    env:
+      DRUSH_OPTIONS_URI: "https://dccr2021d9.lndo.site"
+  composer:
+    service: appserver
+    cmd: composer --working-dir=/app/docroot
+  01-setup:
+    service: appserver
+    cmd:
+      - composer --working-dir=/app/docroot create-project drupal/recommended-project .
+      - composer --working-dir=/app/docroot require drush/drush
+      - cd /app/docroot/web/sites/default && ln -s /app/defaults/drupal/env/settings.php settings.php
+      - cd /app/docroot/web/sites/default && ln -s /app/defaults/drupal/env/settings.local.php settings.local.php
+      - cd /app/docroot/web/sites/default && ln -s /app/defaults/drupal/env/services.local.yml services.local.yml
+      - cd /app/docroot/web/modules && ln -s /app/custom/modules custom
+      - cd /app/docroot/web/themes && ln -s /app/custom/themes custom
+      - cd /app/docroot && ln -s /app/defaults/drupal/config config
+      - /app/docroot/vendor/drush/drush/drush --root=/app/docroot/web si -y
+

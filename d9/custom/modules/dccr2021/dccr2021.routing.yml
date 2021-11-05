@@ -1,0 +1,49 @@
+# Documentación en https://www.drupal.org/docs/drupal-apis/routing-system/structure-of-routes.
+
+dccr2021.custom-1:
+  path: 'dccr2021/demo-1'
+  defaults:
+    _controller: '\Drupal\dccr2021\Controller\CustomController::custom1'
+    _title: 'Custom 1'
+  requirements:
+    _access: 'TRUE'
+
+dccr2021.custom-2:
+  path: 'dccr2021/demo-2'
+  defaults:
+    _controller: '\Drupal\dccr2021\Controller\CustomController::custom2'
+    _title: 'Custom 2'
+  requirements:
+    _permission: 'access content'
+
+dccr2021.custom-3:
+  path: 'dccr2021/demo-3'
+  defaults:
+    _controller: '\Drupal\dccr2021\Controller\CustomController::custom3'
+    _title: 'Custom 3'
+  requirements:
+    _permission: 'mi permiso'
+
+dccr2021.custom-4:
+  path: 'admin/dccr2021/demo-4'
+  defaults:
+    _form: '\Drupal\dccr2021\Form\CustomAdminForm'
+    _title: 'Custom 4'
+  requirements:
+    _permission: 'administer site configuration'
+
+dccr2021.custom-5:
+  path: 'dccr2021/demo-5/{el_valor}'
+  defaults:
+    _controller: '\Drupal\dccr2021\Controller\CustomController::custom5'
+    _title: 'Custom 5'
+  requirements:
+    _access: 'TRUE'
+
+dccr2021.custom-6:
+  path: 'dccr2021/demo-6'
+  defaults:
+    _controller: '\Drupal\dccr2021\Controller\CustomController::custom6'
+    _title: 'Custom 6'
+  requirements:
+    _custom_access: '\Drupal\dccr2021\Controller\CustomController::access6'

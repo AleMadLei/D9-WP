@@ -1,0 +1,6 @@
+name: Drupal Camp 2021 Limpio
+type: theme
+description: Un tema completamente desde cero que no se ve bien porque hay que hacerle mucho trabajo.
+version: VERSION
+base theme: false
+core_version_requirement: ^9

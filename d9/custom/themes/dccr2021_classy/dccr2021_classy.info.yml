@@ -1,0 +1,7 @@
+name: Drupal Camp 2021 Classy
+type: theme
+description: Un tema basado en Classy.
+version: VERSION
+base theme: classy
+core_version_requirement: ^9
+

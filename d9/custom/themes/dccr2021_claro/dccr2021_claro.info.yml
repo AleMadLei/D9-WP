@@ -1,0 +1,6 @@
+name: Drupal Camp 2021 Claro
+type: theme
+description: Tema descendiente de claro.
+version: VERSION
+base theme: claro
+core_version_requirement: ^9
